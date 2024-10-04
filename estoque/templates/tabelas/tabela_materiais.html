@@ -1,0 +1,18 @@
+<table class="border-collapse border border-slate-500 ">
+    <thead>
+        <tr>
+            {% for field in fields %}
+                <th class="border border-slate-600 ">{{ field.verbose_name }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+            <tr>
+                {% for cell in row %}
+                    <td class="border border-slate-600 ">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

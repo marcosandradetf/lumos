@@ -1,0 +1,153 @@
+{% extends 'cadastro/base.html' %}
+{% load form_filters %}
+
+{% block title %}Lumos - Cadastrar Materiais{% endblock %}
+
+{% block content %}
+    <div>
+        <ol class="m-4 w-fit">
+            <li class="flex justify-between items-center">
+                <a href='/' class="text-blue-600 underline cursor-default hover:font-bold">Início</a>
+                <svg width="15px" height="15px" viewBox="-4.5 0 20 20" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier"><title>arrow_right [#333]</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs></defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-425.000000, -6679.000000)"
+                               fill="#000000">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path d="M370.39,6519 L369,6520.406 L377.261,6529.013 L376.38,6529.931 L376.385,6529.926 L369.045,6537.573 L370.414,6539 C372.443,6536.887 378.107,6530.986 380,6529.013 C378.594,6527.547 379.965,6528.976 370.39,6519"
+                                          id="arrow_right-[#333]"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <a href='/estoque' class="text-blue-600 underline cursor-default hover:font-bold">Estoque</a>
+                <svg width="15px" height="15px" viewBox="-4.5 0 20 20" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier"><title>arrow_right [#333]</title>
+                        <desc>Created with Sketch.</desc>
+                        <defs></defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-425.000000, -6679.000000)"
+                               fill="#000000">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path d="M370.39,6519 L369,6520.406 L377.261,6529.013 L376.38,6529.931 L376.385,6529.926 L369.045,6537.573 L370.414,6539 C372.443,6536.887 378.107,6530.986 380,6529.013 C378.594,6527.547 379.965,6528.976 370.39,6519"
+                                          id="arrow_right-[#333]"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span class="cursor-default font-bold">Cadastro</span>
+            </li>
+        </ol>
+    </div>
+    <div class="container flex flex-col lg:flex-row">
+
+        <div class="border border-neutral-300 rounded p-5 lg:w-56 mr-5 w-[80vw] mb-5 lg:mb-0">
+            <ol class="flex lg:flex-col">
+                <li class="cursor-default text-rose-900 font-bold text-xs mb-1"><span
+                        class="text-green-800 font-bold">+</span> Cadastrar Material
+                </li>
+                <li class="cursor-default hover:text-rose-900 hover:font-bold text-xs mb-1"><span
+                        class="text-green-800 font-bold">+</span> Cadastrar Tipo de Material
+                </li>
+                <li class="cursor-default hover:text-rose-900 hover:font-bold text-xs mb-1"><span
+                        class="text-green-800 font-bold">+</span> Cadastrar Grupo de
+                    Material
+                </li>
+                <li class="cursor-default hover:text-rose-900 hover:font-bold text-xs"><span
+                        class="text-green-800 font-bold">+</span> Cadastrar Almoxarifado
+                </li>
+            </ol>
+        </div>
+
+        <div>
+            <div class="border border-neutral-300 rounded p-5 w-[80vw] lg:w-[50vw]">
+                <h2 class="border-b border-neutral-300">Cadastrar Materiais</h2>
+
+                <form class="form-control mt-5"
+                      hx-post="{% url 'cadastrar_materiais' %}"
+                      hx-target="#result">
+                    {% csrf_token %}
+
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="flex flex-col mr-5 lg:w-96">
+                            <label for="formGroupExampleInput" class="form-label">Nome</label>
+                            {{ form.nome_material|add_class:"rounded" }}
+                        </div>
+                        <div class="flex flex-col mr-5 w-28">
+                            <label for="formGroupExampleInput" class="form-label">Unid. compra</label>
+                            {{ form.unidade_compra|add_class:"rounded" }}
+                        </div>
+                        <div class="flex flex-col mr-5 w-32">
+                            <label for="formGroupExampleInput" class="form-label">Unid. requisição</label>
+                            {{ form.unidade_requisicao|add_class:"rounded" }}
+                        </div>
+                        <div class="flex flex-col mr-5 w-48">
+                            <label for="formGroupExampleInput" class="form-label">Tipo de Material</label>
+                            {{ form.id_tipo|add_class:"rounded" }}
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row">
+                        <div class="flex flex-col mr-5 w-48">
+                            <label for="formGroupExampleInput" class="form-label">Grupo do Material</label>
+                            {{ form.id_grupo|add_class:"rounded" }}
+                        </div>
+                        <div class="flex flex-col mr-5 w-48">
+                            <label class="form-label">Qtde. Estoque</label>
+                            {{ form.qtde_estoque|add_class:"rounded" }}
+                        </div>
+                        <div class="flex flex-col mr-5 w-48">
+                            <label class="form-label">Empresa</label>
+                            {{ form.id_empresa|add_class:"rounded" }}
+                        </div>
+                        <div class="flex flex-col mr-5 w-48">
+                            <label class="form-label">Almoxarifado</label>
+                            {{ form.id_almoxarifado|add_class:"rounded" }}
+                        </div>
+                        <div class="flex flex-col mr-5 w-48 ">
+                            <label class="form-label">Ativo/Inativo</label>
+                            {{ form.inativo|add_class:"rounded" }}
+                        </div>
+                    </div>
+
+
+                    <button
+                            class="rounded p-2 bg-blue-500 text-white hover:bg-blue-600 shadow mt-3 cursor-default hover:font-bold">
+                        Cadastrar
+                    </button>
+
+                    <div id="result"></div>
+                </form>
+
+                {#                <a href="{% url 'materiais_cadastrados' %}"#}
+                {#                   class="mt-5 underline text-blue-500 cursor-default hover:text-blue-600 hover:font-bold">Voltar para a#}
+                {#                    lista de materiais</a>#}
+            </div>
+
+        </div>
+    </div>
+
+    <div x-data="{ showMessage: false }"
+         x-init="@if messages: showMessage = true; setTimeout(() => showMessage = false, 3000) @endif">
+        {% for message in messages %}
+            <div x-show="showMessage" class="rounded bg-green-600 p-3 w-28">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="border border-neutral-300 rounded p-5 lg:w-[calc(60vw + 10px)] mt-5">
+        {% include 'tabelas/tabela_materiais.html' %}
+    </div>
+
+{% endblock %}
