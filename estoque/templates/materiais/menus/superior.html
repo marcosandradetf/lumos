@@ -1,26 +1,26 @@
 {% load static %}
 
-<div class="items-center justify-between h-full hidden xl:block">
+<div class="items-center justify-between h-full hidden 2xl:block">
     <img src="{% static 'lumos.png' %}" alt="Logo" class="ml-3 w-10">
 </div>
 
-<div class="flex h-screen w-72 p-5 text-amber-50 flex-col absolute right-0 top-10 bg-neutral-900 xl:w-auto items-center xl:justify-between xl:h-full xl:static xl:block xl:flex-row xl:p-2"
+<div class="flex h-screen w-72 p-5 text-amber-50 flex-col absolute right-0 top-10 bg-neutral-900 2xl:w-auto items-center 2xl:justify-between 2xl:h-full 2xl:static 2xl:block 2xl:flex-row 2xl:p-2"
      :class="{'block': navOpen, 'hidden': !navOpen}">
     <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold">Início</a>
-    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 xl:mt-0">Atendimentos</a>
-    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 xl:mt-0">Equipes</a>
-    <a class="cursor-default rounded bg-neutral-100 text-black p-1 mr-5 hover:font-bold mt-3 xl:mt-0">Estoque</a>
-    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 xl:mt-0">Requisições</a>
-    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 xl:mt-0">Pontos de Iluminação
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 2xl:mt-0">Atendimentos</a>
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 2xl:mt-0">Equipes</a>
+    <a class="cursor-default rounded bg-neutral-100 text-black p-1 mr-5 hover:font-bold mt-3 2xl:mt-0">Estoque</a>
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 2xl:mt-0">Requisições</a>
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 2xl:mt-0">Pontos de Iluminação
         Pública</a>
 
 </div>
 
 <div class="flex items-center justify-between relative" x-data="{ open: false }">
     <div class="flex items-center cursor-default group" @click="open = !open">
-        <span class="text-gray-50 account-name group-hover:text-red-600 text-xs group-hover:font-bold mr-4 select-none ml-4 xl:ml-0">Marcos</span>
+        <span class="text-gray-50 account-name group-hover:text-red-600 text-xs group-hover:font-bold mr-4 select-none ml-4 2xl:ml-0">Marcos</span>
     </div>
-    <div x-show="open" class="text-white absolute top-6 xl:right-0 bg-neutral-800 rounded p-2 w-28 z-10 ">
+    <div x-show="open" class="text-white absolute top-6 2xl:right-0 bg-neutral-800 rounded p-2 w-28 z-10 ">
         <ol>
             <li class="cursor-default hover:text-red-600 hover:font-bold ">Minha conta</li>
             <li class="cursor-default hover:text-red-600 hover:font-bold">Sair</li>
@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<button class="block xl:hidden p-2 text-white" @click="navOpen = !navOpen">
+<button class="block 2xl:hidden p-2 text-white" @click="navOpen = !navOpen">
     <!-- Ícone de Menu -->
     <svg width="20px" height="20px" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink" fill="white">
