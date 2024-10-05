@@ -3,6 +3,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("materiais/cadastro/", views.materiais_view, name="materiais_view"),
-    path("tipos/cadastro/", views.tipos_view, name="tipos_view"),
+    # materiais
+    path("materiais/cadastro/", views.view_material, name="view_material"),
+    path("materiais/delete/<int:id>/", views.delete_material, name="delete_material"),
+    path("materiais/update/<int:id>/", views.update_material, name="update_material"),
+
+    # tipos
+    path("tipos/cadastro/", views.view_tipos, name="view_tipos"),
+
 ]

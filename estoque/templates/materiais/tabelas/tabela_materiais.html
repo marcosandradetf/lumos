@@ -1,4 +1,4 @@
-<table class="border-collapse cursor-default font-light">
+<table class="border-collapse cursor-default font-light select-none">
     <thead>
     <tr>
         <th class="border-b border-slate-600 p-2 bg-indigo-900 text-white text-left">Código</th>
@@ -15,13 +15,21 @@
     </tr>
     </thead>
     <tbody>
-    {% for row in rows %}
+    {% for obj in materiais_obj %}
         <tr class="odd:bg-white even:bg-gray-200">
-            {% for cell in row %}
-                <td class="border-b-2 border-slate-400 p-2">{{ cell }}</td>
-            {% endfor %}
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.id_material }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.nome_material }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.unidade_compra }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.unidade_requisicao }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.id_tipo }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.id_grupo }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.qtde_estoque }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.inativo }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.id_empresa }}</td>
+            <td class="border-b-2 border-slate-400 p-2">{{ obj.id_almoxarifado }}</td>
             <td class="border-b-2 border-slate-400 p-2 cursor-pointer">
-                <svg width="15px" height="15px" viewBox="0 0 16.000001 16.000001"
+                <a href="{% url "delete_material" obj.id_material%}">
+                    <svg width="20px" height="20px" viewBox="0 0 16.000001 16.000001"
                      xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
                      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg"
                      version="1.1" id="svg2" fill="#000000">
@@ -64,9 +72,11 @@
                         </g>
                     </g>
                 </svg>
+                </a>
             </td>
             <td class="border-b-2 border-slate-400 p-2 cursor-pointer">
-                <svg width="15px" height="15px" fill="#4f4f4f" viewBox="-4 0 32 32" version="1.1"
+                <a href="{% url "update_material" obj.id_material%}">
+                    <svg width="20px" height="20px" fill="#4f4f4f" viewBox="-4 0 32 32" version="1.1"
                      xmlns="http://www.w3.org/2000/svg" stroke="#4f4f4f">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -74,8 +84,8 @@
                         <path d="M17.438 22.469v-4.031l2.5-2.5v7.344c0 1.469-1.219 2.688-2.656 2.688h-14.625c-1.469 0-2.656-1.219-2.656-2.688v-14.594c0-1.469 1.188-2.688 2.656-2.688h14.844v0.031l-2.5 2.469h-11.5c-0.531 0-1 0.469-1 1.031v12.938c0 0.563 0.469 1 1 1h12.938c0.531 0 1-0.438 1-1zM19.813 7.219l2.656 2.656 1.219-1.219-2.656-2.656zM10.469 16.594l2.625 2.656 8.469-8.469-2.625-2.656zM8.594 21.094l3.625-0.969-2.656-2.656z"></path>
                     </g>
                 </svg>
+                </a>
             </td>
-
         </tr>
     {% endfor %}
     </tbody>

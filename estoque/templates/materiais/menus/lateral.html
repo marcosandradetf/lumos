@@ -1,5 +1,5 @@
 <!-- Botão de menu para mobile -->
-<button class="block lg:hidden p-2 text-white" @click="menuOpen = !menuOpen">
+<button class="block xl:hidden p-2 text-white" @click="menuOpen = !menuOpen">
     <svg width="20px" height="20px" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink" fill="black">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -19,7 +19,7 @@
     </svg>
 </button>
 
-<div class="w-screen lg:block lg:w-auto" :class="{'block': menuOpen, 'hidden': !menuOpen}">
+<div class="w-screen xl:block xl:w-auto" :class="{'block': menuOpen, 'hidden': !menuOpen}">
     <h1 class="text-xl text-center border-b p-5 mb-5 hover:text-red-600 cursor-default hover:font-bold">
         Estoque
     </h1>

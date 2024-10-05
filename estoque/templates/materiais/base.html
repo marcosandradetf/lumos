@@ -19,29 +19,28 @@
 </head>
 <body>
 
-<header class="flex items-center justify-between bg-neutral-900 fixed top-0 w-full h-10" x-data="{ navOpen: false }">
+<header class="flex items-center justify-between bg-neutral-900 fixed top-0 w-full h-10 z-20" x-data="{ navOpen: false }">
     {% include 'materiais/menus/superior.html' %}
 </header>
 
 <main class="flex mt-10">
-    <div class="relative bg-neutral-50" x-data="{ menuOpen: false }">
+    <div class=" bg-neutral-50 " x-data="{ menuOpen: false }">
 
 
         <!-- Menu Lateral -->
-        <div class="h-screen bg-neutral-50 border-r border-neutral-300 fixed lg:block lg:w-72">
+        <div class="h-screen bg-neutral-50 border-r border-neutral-300 fixed xl:block xl:w-72 mb-10">
             {% include 'materiais/menus/lateral.html' %}
-
         </div>
     </div>
 
-    <div class="ml-16 lg:ml-80">
+    <div class="ml-16 xl:ml-[19rem]">
         {% block content %}
             <!-- O conteúdo específico de cada página irá aqui -->
         {% endblock %}
     </div>
 </main>
 
-<footer class="lg:h-8 h-14 flex items-center justify-end footer pr-3  bg-neutral-50 border-neutral-300 border-t text-black fixed bottom-0 w-full">
+<footer class="xl:h-8 h-14 flex items-center justify-end footer pr-3  bg-neutral-50 border-neutral-300 border-t text-black fixed bottom-0 w-full">
     <p class="text-base shrink hover:font-bold cursor-default">© 2024 github.com/marcosandradetf</p>
     <p class="text-base shrink ml-3 cursor-pointer hover:text-red-600 hover:font-bold cursor-default">Privacidade</p>
     <p class="text-base shrink ml-3 cursor-pointer hover:text-red-600 hover:font-bold cursor-default">Sobre</p>
