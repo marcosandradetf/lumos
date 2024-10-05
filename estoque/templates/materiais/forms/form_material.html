@@ -1,0 +1,57 @@
+{% load form_filters %}
+
+<form class="form-control mt-5"
+      hx-post="{% url 'materiais_view' %}"
+      hx-target="#result">
+    {% csrf_token %}
+
+    <div class="flex">
+        <div class="flex flex-col mr-5 lg:w-96">
+            <label for="formGroupExampleInput" class="form-label">Nome</label>
+            {{ form.nome_material|add_class:"rounded" }}
+        </div>
+        <div class="flex flex-col mr-5 w-28">
+            <label for="formGroupExampleInput" class="form-label">Unid. compra</label>
+            {{ form.unidade_compra|add_class:"rounded" }}
+        </div>
+        <div class="flex flex-col mr-5 w-32">
+            <label for="formGroupExampleInput" class="form-label">Unid. requisição</label>
+            {{ form.unidade_requisicao|add_class:"rounded" }}
+        </div>
+        <div class="flex flex-col mr-5 w-48">
+            <label for="formGroupExampleInput" class="form-label">Tipo de Material</label>
+            {{ form.id_tipo|add_class:"rounded" }}
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="flex flex-col mr-5 w-48">
+            <label for="formGroupExampleInput" class="form-label">Grupo do Material</label>
+            {{ form.id_grupo|add_class:"rounded" }}
+        </div>
+        <div class="flex flex-col mr-5 w-48">
+            <label class="form-label">Qtde. Estoque</label>
+            {{ form.qtde_estoque|add_class:"rounded" }}
+        </div>
+        <div class="flex flex-col mr-5 w-48">
+            <label class="form-label">Empresa</label>
+            {{ form.id_empresa|add_class:"rounded" }}
+        </div>
+        <div class="flex flex-col mr-5 w-48">
+            <label class="form-label">Almoxarifado</label>
+            {{ form.id_almoxarifado|add_class:"rounded" }}
+        </div>
+        <div class="flex flex-col mr-5 w-48 ">
+            <label class="form-label">Ativo/Inativo</label>
+            {{ form.inativo|add_class:"rounded" }}
+        </div>
+    </div>
+
+
+    <button
+            class="rounded p-2 bg-blue-500 text-white hover:bg-blue-600 shadow mt-3 cursor-default hover:font-bold">
+        Cadastrar
+    </button>
+
+    <div id="result"></div>
+</form>

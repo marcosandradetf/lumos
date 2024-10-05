@@ -6,7 +6,7 @@ from estoque.models import Materiais, Categorias, Tipos
 from django.shortcuts import render
 from .models import Materiais
 
-def cadastrar_materiais(request):
+def materiais_view(request):
     # Se for uma requisição POST, processa o formulário
     if request.method == 'POST':
         materiais_form = MateriaisForm(request.POST)
@@ -31,9 +31,9 @@ def cadastrar_materiais(request):
         'rows': material_rows,
     }
 
-    return render(request, 'cadastro/cadastrar_materiais.html', context)
+    return render(request, 'materiais/gerenciar/materiais.html', context)
 
-def cadastrar_tipos_materiais(request):
+def tipos_view(request):
 # Se for uma requisição POST, processa o formulário
     if request.method == 'POST':
         tipos_form = TiposForm(request.POST)
@@ -58,5 +58,5 @@ def cadastrar_tipos_materiais(request):
         'rows': tipos_rows,
     }
 
-    return render(request, 'cadastro/cadastrar_tipos.html', context)
+    return render(request, 'tipos/gerenciar/tipos.html', context)
 

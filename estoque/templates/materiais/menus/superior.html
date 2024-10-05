@@ -1,0 +1,50 @@
+{% load static %}
+
+<div class="items-center justify-between h-full hidden lg:block">
+    <img src="{% static 'lumos.png' %}" alt="Logo" class="ml-3 w-10">
+</div>
+
+<div class="flex h-screen w-72 p-5 text-amber-50 flex-col absolute right-0 top-10 bg-neutral-900 lg:w-auto items-center lg:justify-between lg:h-full lg:static lg:block lg:flex-row lg:p-2"
+     :class="{'block': navOpen, 'hidden': !navOpen}">
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold">Início</a>
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 lg:mt-0">Atendimentos</a>
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 lg:mt-0">Equipes</a>
+    <a class="cursor-default rounded bg-neutral-100 text-black p-1 mr-5 hover:font-bold mt-3 lg:mt-0">Estoque</a>
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 lg:mt-0">Requisições</a>
+    <a href="#" class="cursor-default rounded mr-5 hover:text-red-600 hover:font-bold mt-3 lg:mt-0">Pontos de Iluminação
+        Pública</a>
+
+</div>
+
+<div class="flex items-center justify-between relative" x-data="{ open: false }">
+    <div class="flex items-center cursor-default group" @click="open = !open">
+        <span class="text-gray-50 account-name group-hover:text-red-600 text-xs group-hover:font-bold mr-4 select-none ml-4 lg:ml-0">Marcos</span>
+    </div>
+    <div x-show="open" class="text-white absolute top-6 lg:right-0 bg-neutral-800 rounded p-2 w-28 z-10">
+        <ol>
+            <li class="cursor-default hover:text-red-600 hover:font-bold ">Minha conta</li>
+            <li class="cursor-default hover:text-red-600 hover:font-bold">Sair</li>
+        </ol>
+    </div>
+</div>
+
+<button class="block lg:hidden p-2 text-white" @click="navOpen = !navOpen">
+    <!-- Ícone de Menu -->
+    <svg width="20px" height="20px" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink" fill="white">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier"><title>align_text_distribute [#914]</title>
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="white" fill-rule="evenodd">
+                <g id="Dribbble-Light-Preview" transform="translate(-300.000000, -4161.000000)" fill="white">
+                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                        <path d="M244,4017 L264,4017 L264,4015 L244,4015 L244,4017 Z M244,4003 L264,4003 L264,4001 L244,4001 L244,4003 Z M244,4010 L264,4010 L264,4008 L244,4008 L244,4010 Z"
+                              id="align_text_distribute-[#914]"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
+</button>

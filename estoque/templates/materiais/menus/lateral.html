@@ -1,0 +1,49 @@
+<!-- Botão de menu para mobile -->
+<button class="block lg:hidden p-2 text-white" @click="menuOpen = !menuOpen">
+    <svg width="20px" height="20px" viewBox="0 -2 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink" fill="black">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier"><title>align_text_distribute [#914]</title>
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="black" fill-rule="evenodd">
+                <g id="Dribbble-Light-Preview" transform="translate(-300.000000, -4161.000000)" fill="black">
+                    <g id="icons" transform="translate(56.000000, 160.000000)">
+                        <path d="M244,4017 L264,4017 L264,4015 L244,4015 L244,4017 Z M244,4003 L264,4003 L264,4001 L244,4001 L244,4003 Z M244,4010 L264,4010 L264,4008 L244,4008 L244,4010 Z"
+                              id="align_text_distribute-[#914]"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </svg>
+</button>
+
+<div class="w-screen lg:block lg:w-auto" :class="{'block': menuOpen, 'hidden': !menuOpen}">
+    <h1 class="text-xl text-center border-b p-5 mb-5 hover:text-red-600 cursor-default hover:font-bold">
+        Estoque
+    </h1>
+    <ol>
+        <a href="/estoque">
+            <li class="rounded pl-5 cursor-default hover:text-blue-500 hover:font-bold">Lista de Materiais
+            </li>
+        </a>
+        <a href="">
+            <li class="rounded pl-5 cursor-default text-blue-600 font-bold">Cadastrar Material</li>
+        </a>
+        <a href="/estoque/entrada">
+            <li class="rounded pl-5 cursor-default hover:text-blue-500 hover:font-bold">Entrada de
+                Material
+            </li>
+        </a>
+        <a href="/estoque/importar">
+            <li class="rounded pl-5 cursor-default hover:text-blue-500 hover:font-bold">Importar Material
+                (.xlsx)
+            </li>
+        </a>
+        <a href="/estoque/sugestao">
+            <li class="rounded pl-5 cursor-default hover:text-blue-500 hover:font-bold">Sugestão de Compra
+            </li>
+        </a>
+    </ol>
+</div>
