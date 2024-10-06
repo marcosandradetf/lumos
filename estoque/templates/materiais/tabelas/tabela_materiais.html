@@ -1,4 +1,4 @@
-<table class="border-collapse cursor-default font-light select-none">
+<table class="border-collapse cursor-default font-light select-none" id="insert">
     <thead>
     <tr>
         <th class="border-b border-slate-600 p-2 bg-indigo-900 text-white text-left">Código</th>
@@ -16,7 +16,7 @@
     </thead>
     <tbody>
     {% for obj in materiais_obj %}
-        <tr class="odd:bg-white even:bg-gray-200 fade-out" id="row-{{ obj.id_material }}">
+        <tr class="odd:bg-white even:bg-gray-200" {# id="row-{{ obj.id_material }}" #} >
             <td class="border-b-2 border-slate-400 p-2 ">{{ obj.id_material }}</td>
             <td class="border-b-2 border-slate-400 p-2">{{ obj.nome_material }}</td>
             <td class="border-b-2 border-slate-400 p-2">{{ obj.unidade_compra }}</td>
@@ -28,11 +28,12 @@
             <td class="border-b-2 border-slate-400 p-2">{{ obj.id_empresa }}</td>
             <td class="border-b-2 border-slate-400 p-2">{{ obj.id_almoxarifado }}</td>
             <td class="border-b-2 border-slate-400 p-2 cursor-pointer">
-                <a hx-delete="{% url 'delete_material' obj.id_material %}"
-   hx-target="#row-{{ obj.id_material }}"
-   hx-swap="outerHTML"
-   hx-confirm="Tem certeza de que deseja deletar este material?"
-                   hx-on="htmx:responseError: document.getElementById('messages-container').innerHTML = event.detail.xhr.response.messages"
+                <a
+{#                    hx-delete="{% url 'delete_material' obj.id_material %}"#}
+{#                   hx-target="#row-{{ obj.id_material }}"#}
+{#                   hx-swap="outerHTML"#}
+{#                   hx-confirm="Tem certeza de que deseja deletar este material?"#}
+{#                   hx-on="htmx:responseError: document.getElementById('messages-container').innerHTML = event.detail.xhr.response.messages"#}
                    class="cursor-pointer">
                     <svg width="20px" height="20px" viewBox="0 0 16.000001 16.000001"
                          xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"

@@ -10,26 +10,46 @@ from django.shortcuts import render
 from .models import Materiais
 
 def view_material(request):
-    # Se for uma requisição POST, processa o formulário
-    if request.method == 'POST':
-        materiais_form = MateriaisForm(request.POST)
-        if materiais_form.is_valid():
-            materiais_form.save()  # Salva o novo material no banco de dados
-            messages.success(request, 'Material cadastrado com sucesso!')  # Mensagem de sucesso
-
-            return redirect('cadastrar_materiais')  # Redireciona para a mesma página após salvar
-    else:
-        materiais_form = MateriaisForm()
-
+    # # Se for uma requisição POST, processa o formulário
+    # if request.method == 'POST':
+    #     materiais_form = MateriaisForm(request.POST)
+    #     if materiais_form.is_valid():
+    #         materiais_form.save()  # Salva o novo material no banco de dados
+    #         messages.success(request, 'Material cadastrado com sucesso!')  # Mensagem de sucesso
+    #
+    #         return redirect('cadastrar_materiais')  # Redireciona para a mesma página após salvar
+    # else:
+    #     materiais_form = MateriaisForm()
+    #
+    # materiais_obj = Materiais.objects.all()
+    #
+    # context = {
+    #     'form': materiais_form,  # O formulário para cadastro dados dos materiais
+    #     'messages': messages.get_messages(request),
+    #     'materiais_obj': materiais_obj,  # Inclui os campos no contexto
+    # }
     materiais_obj = Materiais.objects.all()
-
-    context = {
-        'form': materiais_form,  # O formulário para cadastro dados dos materiais
-        'messages': messages.get_messages(request),
-        'materiais_obj': materiais_obj,  # Inclui os campos no contexto
-    }
+    materiais_form = MateriaisForm()
+    context = {'form': materiais_form,
+               'materiais_obj': materiais_obj,}
 
     return render(request, 'materiais/gerenciar/materiais.html', context)
+
+def insert_material(request):
+    materiais_form = MateriaisForm(request.POST)
+    materiais_obj = Materiais.objects.all()
+    context = {'materiais_form': materiais_form,
+               'materiais_obj': materiais_obj,
+               'messages': messages.get_messages(request),}
+    if materiais_form.is_valid():
+        materiais_form.save()  # Salva o novo material no banco de dados
+        messages.success(request, 'Material cadastrado com sucesso!')  # Mensagem de sucesso
+        response = render_to_string('materiais/tabelas/tabela_materiais.html', context)
+        return HttpResponse(response)
+
+    messages.error(request, "Erro ao cadastrar materiais")
+    response = render_to_string('materiais/tabelas/tabela_materiais.html', context)
+    return HttpResponse(response)
 
 
 def update_material(request, id):
