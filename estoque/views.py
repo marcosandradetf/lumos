@@ -1,5 +1,8 @@
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.template.loader import render_to_string
+
 from estoque.forms import CategoriasForm, MateriaisForm, TiposForm
 from estoque.models import Materiais, Categorias, Tipos
 
@@ -51,19 +54,21 @@ def update_material(request, id):
     # Renderiza o template com o formulário
     return render(request, 'materiais/gerenciar/update_material.html', {'form': materiais_form_update})
 
+
 def delete_material(request, id):
     material = get_object_or_404(Materiais, id_material=id)
 
-    # Verificação: Se o material está ativo (inativo == False), não pode ser deletado
     if not material.inativo:
-        # Adiciona uma mensagem de erro (precisa configurar mensagens no template)
-        messages.error(request, "Você não pode deletar um material ativo.")
-        # Redireciona para a página anterior ou a lista de materiais
-        return redirect('view_material')
+        messages.error(request, f"O material {id} - {material.nome_material} não pode ser excluído pois está ativo.")
+        message_html = render_to_string('materiais/messages/messages_server.html', {'messages': messages.get_messages(request)})
+        return HttpResponse(message_html)
 
+    # Se chegar aqui, o material pode ser excluído
     material.delete()
-    messages.success(request, "Material deletado com sucesso.")
-    return redirect('view_material')
+    messages.success(request, f"Material {id} - {material.nome_material} foi excluído com sucesso.")
+    message_html = render_to_string('materiais/messages/messages_server.html', {'messages': messages.get_messages(request)})
+    return HttpResponse(message_html)
+
 
 def view_tipos(request):
 # Se for uma requisição POST, processa o formulário
@@ -91,4 +96,3 @@ def view_tipos(request):
     }
 
     return render(request, 'tipos/gerenciar/tipos.html', context)
-

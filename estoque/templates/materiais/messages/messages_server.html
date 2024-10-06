@@ -1,7 +1,7 @@
 {% if messages %}
     {% for message in messages %}
-        <div id="{% if 'success' in message.tags %}alert-border-3{% elif 'error' in message.tags %}alert-border-2{% endif %}"
-             class="{% if 'success' in message.tags %}flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800{% elif 'error' in message.tags %} flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800{% endif %}"
+        <div id="{% if 'success' in message.tags %}success{% elif 'error' in message.tags %}alert-border-2{% endif %}"
+             class="{% if 'alert-border-3' in message.tags %}flex items-center p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800{% elif 'error' in message.tags %} flex items-center p-4 mb-4 text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800{% endif %}"
              role="alert">
             <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                  viewBox="0 0 20 20">

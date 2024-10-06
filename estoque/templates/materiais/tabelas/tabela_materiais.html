@@ -16,8 +16,8 @@
     </thead>
     <tbody>
     {% for obj in materiais_obj %}
-        <tr class="odd:bg-white even:bg-gray-200">
-            <td class="border-b-2 border-slate-400 p-2">{{ obj.id_material }}</td>
+        <tr class="odd:bg-white even:bg-gray-200 fade-out" id="row-{{ obj.id_material }}">
+            <td class="border-b-2 border-slate-400 p-2 ">{{ obj.id_material }}</td>
             <td class="border-b-2 border-slate-400 p-2">{{ obj.nome_material }}</td>
             <td class="border-b-2 border-slate-400 p-2">{{ obj.unidade_compra }}</td>
             <td class="border-b-2 border-slate-400 p-2">{{ obj.unidade_requisicao }}</td>
@@ -28,62 +28,71 @@
             <td class="border-b-2 border-slate-400 p-2">{{ obj.id_empresa }}</td>
             <td class="border-b-2 border-slate-400 p-2">{{ obj.id_almoxarifado }}</td>
             <td class="border-b-2 border-slate-400 p-2 cursor-pointer">
-                <a href="{% url "delete_material" obj.id_material%}">
+                <a hx-delete="{% url 'delete_material' obj.id_material %}"
+   hx-target="#row-{{ obj.id_material }}"
+   hx-swap="outerHTML"
+   hx-confirm="Tem certeza de que deseja deletar este material?"
+                   hx-on="htmx:responseError: document.getElementById('messages-container').innerHTML = event.detail.xhr.response.messages"
+                   class="cursor-pointer">
                     <svg width="20px" height="20px" viewBox="0 0 16.000001 16.000001"
-                     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
-                     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg"
-                     version="1.1" id="svg2" fill="#000000">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <metadata id="metadata7">
-                            <rdf:rdf>
-                                <cc:work>
-                                    <dc:format>image/svg+xml</dc:format>
-                                    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"></dc:type>
-                                    <dc:title></dc:title>
-                                    <dc:creator>
-                                        <cc:agent>
-                                            <dc:title>Timothée Giet</dc:title>
-                                        </cc:agent>
-                                    </dc:creator>
-                                    <dc:date>2021</dc:date>
-                                    <cc:license
-                                            rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"></cc:license>
-                                </cc:work>
-                                <cc:license rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
-                                    <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"></cc:permits>
-                                    <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"></cc:permits>
-                                    <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"></cc:requires>
-                                    <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution"></cc:requires>
-                                    <cc:permits
-                                            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"></cc:permits>
-                                    <cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike"></cc:requires>
-                                </cc:license>
-                            </rdf:rdf>
-                        </metadata>
-                        <g transform="matrix(.7 0 0 .7 .6 -6.7)" style="display:inline" id="layer4">
-                            <path id="rect833" transform="translate(-.857 9.571) scale(1.42857)"
-                                  d="M3 6v8c0 .554.446 1 1 1h8c.554 0 1-.446 1-1V6z"
-                                  style="opacity:1;vector-effect:none;fill:#0062ff;fill-opacity:1;stroke:none;stroke-width:2.46936798;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:3.20000005;stroke-opacity:.55063291"></path>
-                            <path id="rect840" transform="translate(-.857 9.571) scale(1.42857)"
-                                  d="M5 1v2H2v2h12V3h-3V1zm1 1h4v1H6z"
-                                  style="opacity:1;vector-effect:none;fill:#0062ff;fill-opacity:1;stroke:none;stroke-width:2.79999995;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:3.20000005;stroke-opacity:.55063291"></path>
+                         xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+                         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg"
+                         version="1.1" id="svg2" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <metadata id="metadata7">
+                                <rdf:rdf>
+                                    <cc:work>
+                                        <dc:format>image/svg+xml</dc:format>
+                                        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"></dc:type>
+                                        <dc:title></dc:title>
+                                        <dc:creator>
+                                            <cc:agent>
+                                                <dc:title>Timothée Giet</dc:title>
+                                            </cc:agent>
+                                        </dc:creator>
+                                        <dc:date>2021</dc:date>
+                                        <cc:license
+                                                rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"></cc:license>
+                                    </cc:work>
+                                    <cc:license rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+                                        <cc:permits
+                                                rdf:resource="http://creativecommons.org/ns#Reproduction"></cc:permits>
+                                        <cc:permits
+                                                rdf:resource="http://creativecommons.org/ns#Distribution"></cc:permits>
+                                        <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"></cc:requires>
+                                        <cc:requires
+                                                rdf:resource="http://creativecommons.org/ns#Attribution"></cc:requires>
+                                        <cc:permits
+                                                rdf:resource="http://creativecommons.org/ns#DerivativeWorks"></cc:permits>
+                                        <cc:requires
+                                                rdf:resource="http://creativecommons.org/ns#ShareAlike"></cc:requires>
+                                    </cc:license>
+                                </rdf:rdf>
+                            </metadata>
+                            <g transform="matrix(.7 0 0 .7 .6 -6.7)" style="display:inline" id="layer4">
+                                <path id="rect833" transform="translate(-.857 9.571) scale(1.42857)"
+                                      d="M3 6v8c0 .554.446 1 1 1h8c.554 0 1-.446 1-1V6z"
+                                      style="opacity:1;vector-effect:none;fill:#0062ff;fill-opacity:1;stroke:none;stroke-width:2.46936798;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:3.20000005;stroke-opacity:.55063291"></path>
+                                <path id="rect840" transform="translate(-.857 9.571) scale(1.42857)"
+                                      d="M5 1v2H2v2h12V3h-3V1zm1 1h4v1H6z"
+                                      style="opacity:1;vector-effect:none;fill:#0062ff;fill-opacity:1;stroke:none;stroke-width:2.79999995;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:3.20000005;stroke-opacity:.55063291"></path>
+                            </g>
                         </g>
-                    </g>
-                </svg>
+                    </svg>
                 </a>
             </td>
             <td class="border-b-2 border-slate-400 p-2 cursor-pointer">
-                <a href="{% url "update_material" obj.id_material%}">
+                <a href="{% url "update_material" obj.id_material %}">
                     <svg width="20px" height="20px" fill="#4f4f4f" viewBox="-4 0 32 32" version="1.1"
-                     xmlns="http://www.w3.org/2000/svg" stroke="#4f4f4f">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier"><title>edit</title>
-                        <path d="M17.438 22.469v-4.031l2.5-2.5v7.344c0 1.469-1.219 2.688-2.656 2.688h-14.625c-1.469 0-2.656-1.219-2.656-2.688v-14.594c0-1.469 1.188-2.688 2.656-2.688h14.844v0.031l-2.5 2.469h-11.5c-0.531 0-1 0.469-1 1.031v12.938c0 0.563 0.469 1 1 1h12.938c0.531 0 1-0.438 1-1zM19.813 7.219l2.656 2.656 1.219-1.219-2.656-2.656zM10.469 16.594l2.625 2.656 8.469-8.469-2.625-2.656zM8.594 21.094l3.625-0.969-2.656-2.656z"></path>
-                    </g>
-                </svg>
+                         xmlns="http://www.w3.org/2000/svg" stroke="#4f4f4f">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier"><title>edit</title>
+                            <path d="M17.438 22.469v-4.031l2.5-2.5v7.344c0 1.469-1.219 2.688-2.656 2.688h-14.625c-1.469 0-2.656-1.219-2.656-2.688v-14.594c0-1.469 1.188-2.688 2.656-2.688h14.844v0.031l-2.5 2.469h-11.5c-0.531 0-1 0.469-1 1.031v12.938c0 0.563 0.469 1 1 1h12.938c0.531 0 1-0.438 1-1zM19.813 7.219l2.656 2.656 1.219-1.219-2.656-2.656zM10.469 16.594l2.625 2.656 8.469-8.469-2.625-2.656zM8.594 21.094l3.625-0.969-2.656-2.656z"></path>
+                        </g>
+                    </svg>
                 </a>
             </td>
         </tr>

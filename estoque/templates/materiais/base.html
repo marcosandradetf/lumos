@@ -12,6 +12,8 @@
           integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMS0dE1c4z5D1B8PqQ1H6Wk2ZlK9Bf5BfW9E57" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+    <script defer src="{% static 'script/messages_server.js' %}"></script>
+    <script defer src="{% static 'script/htmx.js' %}"></script>
     <!-- Carregar arquivos estáticos -->
   <!-- Link para o arquivo CSS estático -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -23,8 +25,8 @@
     {% include 'materiais/menus/superior.html' %}
 </header>
 
-<main class="flex mt-10">
-    <div class="z-10 bg-neutral-50 " x-data="{ menuOpen: false }">
+<main class="flex mt-10 mb-6" >
+    <div class="z-10 bg-neutral-50 " x-data="{ menuOpen: false }" >
 
 
         <!-- Menu Lateral -->
@@ -33,7 +35,7 @@
         </div>
     </div>
 
-    <div class="ml-16 lg:ml-3 2xl:ml-[19rem]">
+    <div class="ml-16 lg:ml-14 2xl:ml-[19rem]">
         {% block content %}
             <!-- O conteúdo específico de cada página irá aqui -->
         {% endblock %}

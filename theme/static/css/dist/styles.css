@@ -923,6 +923,14 @@ select {
   margin: 1rem;
 }
 
+.m-5 {
+  margin: 1.25rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1016,6 +1024,22 @@ select {
 
 .ml-12 {
   margin-left: 3rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-7 {
+  margin-bottom: 1.75rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .block {
@@ -1333,6 +1357,10 @@ select {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .content-start {
   align-content: flex-start;
 }
@@ -1562,6 +1590,11 @@ select {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-bold {
@@ -1811,6 +1844,18 @@ select {
     margin-left: 19rem;
   }
 
+  .lg\:ml-3 {
+    margin-left: 0.75rem;
+  }
+
+  .lg\:ml-12 {
+    margin-left: 3rem;
+  }
+
+  .lg\:ml-14 {
+    margin-left: 3.5rem;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -1997,6 +2042,18 @@ select {
     right: 1rem;
   }
 
+  .xl\:right-3 {
+    right: 0.75rem;
+  }
+
+  .xl\:-right-2 {
+    right: -0.5rem;
+  }
+
+  .xl\:-right-3 {
+    right: -0.75rem;
+  }
+
   .xl\:ml-0 {
     margin-left: 0px;
   }
@@ -2037,6 +2094,38 @@ select {
     height: 46rem;
   }
 
+  .xl\:h-\[22rem\] {
+    height: 22rem;
+  }
+
+  .xl\:h-\[20rem\] {
+    height: 20rem;
+  }
+
+  .xl\:h-\[10rem\] {
+    height: 10rem;
+  }
+
+  .xl\:h-\[19rem\] {
+    height: 19rem;
+  }
+
+  .xl\:h-\[21rem\] {
+    height: 21rem;
+  }
+
+  .xl\:h-\[45rem\] {
+    height: 45rem;
+  }
+
+  .xl\:h-\[45\.5rem\] {
+    height: 45.5rem;
+  }
+
+  .xl\:h-\[45\.8rem\] {
+    height: 45.8rem;
+  }
+
   .xl\:w-72 {
     width: 18rem;
   }
@@ -2061,6 +2150,22 @@ select {
     width: 65rem;
   }
 
+  .xl\:w-48 {
+    width: 12rem;
+  }
+
+  .xl\:w-\[60rem\] {
+    width: 60rem;
+  }
+
+  .xl\:w-\[18rem\] {
+    width: 18rem;
+  }
+
+  .xl\:w-\[20rem\] {
+    width: 20rem;
+  }
+
   .xl\:flex-row {
     flex-direction: row;
   }
@@ -2083,6 +2188,10 @@ select {
 }
 
 @media (min-width: 1536px) {
+  .\32xl\:static {
+    position: static;
+  }
+
   .\32xl\:absolute {
     position: absolute;
   }
@@ -2123,8 +2232,52 @@ select {
     right: -4rem;
   }
 
+  .\32xl\:right-0 {
+    right: 0px;
+  }
+
+  .\32xl\:ml-\[19rem\] {
+    margin-left: 19rem;
+  }
+
+  .\32xl\:ml-0 {
+    margin-left: 0px;
+  }
+
+  .\32xl\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .\32xl\:mb-0 {
+    margin-bottom: 0px;
+  }
+
+  .\32xl\:block {
+    display: block;
+  }
+
+  .\32xl\:hidden {
+    display: none;
+  }
+
   .\32xl\:h-\[46rem\] {
     height: 46rem;
+  }
+
+  .\32xl\:h-full {
+    height: 100%;
+  }
+
+  .\32xl\:h-\[22rem\] {
+    height: 22rem;
+  }
+
+  .\32xl\:h-\[25rem\] {
+    height: 25rem;
+  }
+
+  .\32xl\:h-\[24\.9rem\] {
+    height: 24.9rem;
   }
 
   .\32xl\:w-\[100\%\] {
@@ -2155,8 +2308,36 @@ select {
     width: 24rem;
   }
 
+  .\32xl\:w-72 {
+    width: 18rem;
+  }
+
+  .\32xl\:w-auto {
+    width: auto;
+  }
+
+  .\32xl\:w-56 {
+    width: 14rem;
+  }
+
   .\32xl\:flex-row {
     flex-direction: row;
+  }
+
+  .\32xl\:flex-col {
+    flex-direction: column;
+  }
+
+  .\32xl\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .\32xl\:justify-between {
+    justify-content: space-between;
+  }
+
+  .\32xl\:p-2 {
+    padding: 0.5rem;
   }
 }
 
