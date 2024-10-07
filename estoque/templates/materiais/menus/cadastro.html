@@ -1,14 +1,15 @@
-<ol class="flex justify-between 2xl:flex-col 2xl:justify-start">
-    <li class="text-rose-900 font-bold text-xs mb-1">
-        <a href="{% url 'view_material' %}" class="cursor-default"><span class="text-green-800 font-bold">+</span> Cadastrar Material</a>
+<ol class="flex justify-center border border-neutral-300 bg-neutral-50 p-2 fixed w-full top-10 ">
+    <li class="mb-1 mr-8 text-blue-600 font-bold text-xs relative">
+        <a href="{% url 'view_material' %}" class="block cursor-default"><span class="text-blue-600 font-bold">+</span> Cadastrar Material</a>
+        <div class="absolute left-0 right-0 -bottom-3 border-b-[3px] border-blue-500"></div>
     </li>
-    <li class="hover:text-rose-900 hover:font-bold text-xs mb-1">
-        <a href="{% url 'view_material' %}" class="cursor-default"><span class="text-green-800 font-bold">+</span> Cadastrar Tipo de Material</a>
+    <li class="hover:text-rose-900 hover:font-bold text-xs mb-1 mr-8">
+        <a href="{% url 'view_material' %}" class="cursor-default"><span class="font-bold">+</span> Cadastrar Tipo de Material</a>
     </li>
-    <li class="cursor-default hover:text-rose-900 hover:font-bold text-xs mb-1">
-        <a href="{% url 'view_material' %}" class="cursor-default"><span class="text-green-800 font-bold">+</span> Cadastrar Grupo de Material</a>
+    <li class="cursor-default hover:text-rose-900 hover:font-bold text-xs mb-1 mr-8">
+        <a href="{% url 'view_material' %}" class="cursor-default"><span class="font-bold">+</span> Cadastrar Grupo de Material</a>
     </li>
     <li class="cursor-default hover:text-rose-900 hover:font-bold text-xs">
-        <a href="{% url 'view_material' %}" class="cursor-default"><span class="text-green-800 font-bold">+</span> Cadastrar Almoxarifado</a>
+        <a href="{% url 'view_material' %}" class="cursor-default"><span class="font-bold">+</span> Cadastrar Almoxarifado</a>
     </li>
 </ol>

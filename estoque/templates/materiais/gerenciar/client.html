@@ -1,0 +1,26 @@
+<div>
+    <div class="container flex flex-col 2xl:flex-row relative w-dvw">
+        {# -------> Messages   #}
+        <div class="border border-neutral-300 shadow overflow-auto h-44 mb-4 xl:absolute xl:-right-3  2xl:-right-16 p-5 w-[90vw] xl:h-[45.8rem] 2xl:w-[24rem] xl:mb-0 xl:w-[20rem]">
+            <h2 class="text-center border-b border-neutral-300 mb-5">Últimas Atualizaçoes</h2>
+            {% include 'materiais/messages/messages_server.html' %}
+        </div>
+        {# -------> End_Messages   #}
+
+        {# -----> Form  #}
+        <div>
+            <div class="border border-neutral-300 shadow p-5 w-[90vw] xl:w-[60rem] 2xl:w-[75rem] ">
+                <h2 class="border-b border-neutral-300">Cadastrar Materiais</h2>
+
+                {% include 'materiais/forms/form_material.html' %}
+            </div>
+        </div>
+        {# -----> End_Form  #}
+    </div>
+
+    {#  ----> Table  #}
+    <div class="mt-4 border border-neutral-300 shadow p-5 w-[90vw] h-[40rem] xl:w-[60rem] 2xl:w-[75rem] xl:h-[20rem] overflow-auto mb-5 2xl:h-[24.9rem]">
+        {% include 'materiais/tabelas/tabela_materiais.html' %}
+    </div>
+    {#    End_Table  #}
+</div>
