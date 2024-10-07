@@ -65,3 +65,13 @@ class Materiais(models.Model):
 #     nome_nota_fiscal = models.CharField(max_length=50)
 #     data_hora = models.DateTimeField()
 #     id_material = models.ForeignKey(Materiais, on_delete=models.CASCADE)
+
+class Log(models.Model):
+    type = models.CharField(max_length=10)
+    message = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    category = models.CharField(max_length=30)  # Para identificar o tipo de log (ex: "estoque", "requisicao", etc.)
+    user = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True, blank=True)  # Para registrar o usuário, se aplicável
+
+    def __str__(self):
+        return f"{self.category}: {self.message} at {self.created_at}"

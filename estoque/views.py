@@ -7,6 +7,8 @@ from estoque.forms import CategoriasForm, MateriaisForm, TiposForm
 from estoque.models import Materiais, Categorias, Tipos
 
 from django.shortcuts import render
+
+from estoque.models import Log
 from .models import Materiais
 
 def view_material(request):
@@ -17,19 +19,25 @@ def view_material(request):
 
     return render(request, 'materiais/gerenciar/materiais.html', context)
 
+def materiais_messages(request):
+    messages_obj = Log.objects.filter(category='materiais')
+    return render(request, 'materiais/messages/messages_server.html', {'messages_obj': messages_obj})
+
 def insert_material(request):
     materiais_form = MateriaisForm(request.POST)
+    # nome_material = materiais_form.cleaned_data.get('nome_material', 'desconhecido')
+    nome_material = 'desconhecido'
     materiais_obj = Materiais.objects.all()
     context = {'form': MateriaisForm(),
-               'materiais_obj': materiais_obj,
-               'messages': messages.get_messages(request),}
+               'materiais_obj': materiais_obj,}
     if materiais_form.is_valid():
         materiais_form.save()  # Salva o novo material no banco de dados
-        messages.success(request, 'Material cadastrado com sucesso!')  # Mensagem de sucesso
+        Log.objects.create(type= "success" ,message=f'Material {nome_material} cadastrado com sucesso!', category='material')
         response = render_to_string('materiais/gerenciar/client.html', context)
         return HttpResponse(response)
 
-    messages.error(request, "Erro ao cadastrar materiais")
+    Log.objects.create(type="error", message=f'Erro ao cadastrar material {nome_material}.',
+                       category='material')
     response = render_to_string('materiais/gerenciar/client.html', context)
     return HttpResponse(response)
 
