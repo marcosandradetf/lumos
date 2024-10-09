@@ -133,5 +133,3 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-#windows
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"

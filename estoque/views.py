@@ -1,3 +1,4 @@
+from django.contrib.messages import success
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -11,33 +12,47 @@ from django.shortcuts import render
 from estoque.models import Log
 from .models import Materiais
 
+
 def view_material(request):
     materiais_obj = Materiais.objects.all()
     materiais_form = MateriaisForm()
     context = {'form': materiais_form,
-               'materiais_obj': materiais_obj,}
+               'materiais_obj': materiais_obj, }
 
     return render(request, 'materiais/gerenciar/materiais.html', context)
 
+
 def materiais_messages(request):
-    messages_obj = Log.objects.filter(category='materiais')
+    messages_obj = Log.objects.filter(category='material').order_by('-created_at')[:30]
     return render(request, 'materiais/messages/messages_server.html', {'messages_obj': messages_obj})
+
 
 def insert_material(request):
     materiais_form = MateriaisForm(request.POST)
-    # nome_material = materiais_form.cleaned_data.get('nome_material', 'desconhecido')
-    nome_material = 'desconhecido'
+    nome_material = materiais_form.cleaned_data.get('nome_material',
+                                                    'desconhecido') if materiais_form.is_valid() else 'desconhecido'
     materiais_obj = Materiais.objects.all()
-    context = {'form': MateriaisForm(),
-               'materiais_obj': materiais_obj,}
-    if materiais_form.is_valid():
-        materiais_form.save()  # Salva o novo material no banco de dados
-        Log.objects.create(type= "success" ,message=f'Material {nome_material} cadastrado com sucesso!', category='material')
-        response = render_to_string('materiais/gerenciar/client.html', context)
-        return HttpResponse(response)
+    # Inicializa o dicionário de mensagens vazio
+    response_message = {}
 
-    Log.objects.create(type="error", message=f'Erro ao cadastrar material {nome_material}.',
-                       category='material')
+    if materiais_form.is_valid():
+        # Salva o novo material no banco de dados
+        materiais_form.save()
+        # Cria um log de sucesso e define a mensagem de sucesso
+        Log.objects.create(type="success", message=f'Material {nome_material} cadastrado com sucesso!',
+                           category='material')
+        response_message['success'] = f'Material {nome_material} cadastrado com sucesso!'
+    else:
+        # Cria um log de erro e define a mensagem de erro
+        Log.objects.create(type="error", message=f'Erro ao cadastrar material {nome_material}.', category='material')
+        response_message['error'] = f'Erro ao cadastrar material {nome_material}.'
+    # Atualiza o contexto com o dicionário de mensagens
+    context = {
+        'form': MateriaisForm(),
+        'materiais_obj': materiais_obj,
+        'message': response_message,
+    }
+    # Renderiza o template com o contexto atualizado
     response = render_to_string('materiais/gerenciar/client.html', context)
     return HttpResponse(response)
 
@@ -67,21 +82,33 @@ def update_material(request, id):
 
 def delete_material(request, id):
     material = get_object_or_404(Materiais, id_material=id)
+    response_message = {}
 
     if not material.inativo:
-        messages.error(request, f"O material {id} - {material.nome_material} não pode ser excluído pois está ativo.")
-        message_html = render_to_string('materiais/messages/messages_server.html', {'messages': messages.get_messages(request)})
-        return HttpResponse(message_html)
+        # Cria um log de erro e define a mensagem de erro
+        Log.objects.create(type="error",
+                           message=f"O material {id} - {material.nome_material} não pode ser excluído pois está ativo.",
+                           category='material')
+        response_message['error'] = f"O material {id} - {material.nome_material} não pode ser excluído pois está ativo."
+    else:
+        material.delete()
+        Log.objects.create(type="success",
+                           message=f"Material {id} - {material.nome_material} foi excluído com sucesso.",
+                           category='material')
+        response_message['success'] = f"Material {id} - {material.nome_material} foi excluído com sucesso."
 
-    # Se chegar aqui, o material pode ser excluído
-    material.delete()
-    messages.success(request, f"Material {id} - {material.nome_material} foi excluído com sucesso.")
-    message_html = render_to_string('materiais/messages/messages_server.html', {'messages': messages.get_messages(request)})
-    return HttpResponse(message_html)
+    context = {
+        'form': MateriaisForm(),
+        'materiais_obj': Materiais.objects.all(),
+        'message': response_message,
+    }
+    # Renderiza o template com o contexto atualizado
+    response = render_to_string('materiais/gerenciar/client.html', context)
+    return HttpResponse(response)
 
 
 def view_tipos(request):
-# Se for uma requisição POST, processa o formulário
+    # Se for uma requisição POST, processa o formulário
     if request.method == 'POST':
         tipos_form = TiposForm(request.POST)
         if tipos_form.is_valid():
