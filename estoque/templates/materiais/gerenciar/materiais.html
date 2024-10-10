@@ -16,12 +16,19 @@
                 <div :class="logOpen ? '' : 'border-none'"
                      class="flex items-center justify-between border-b border-neutral-300 mb-5">
                     <h2 class="text-center">Últimas Atualizaçoes</h2>
-                    <span class="material-icons cursor-pointer select-none" @click="logOpen = !logOpen"
+                    <span class="material-icons cursor-pointer select-none"
+                          @click="logOpen = !logOpen"
                           x-text="logOpen ? 'visibility_off' : 'visibility'"></span>
                 </div>
-                <div x-show="logOpen" id="messages" hx-get="{% url 'materiais_messages' %}" hx-trigger="load, every 5s"
-                     hx-swap="innerHTML">
+                <div x-show="logOpen"
+                     @transitionend="if (logOpen) { setInterval(() => { document.getElementById('messages').dispatchEvent(new Event('htmx:load')); }, 5000) }">
+                    <div id="messages"
+                         hx-get="{% url 'materiais_messages' %}"
+                         hx-trigger="load"
+                         hx-swap="innerHTML">
+                    </div>
                 </div>
+
             </div>
         </div>
         {# -------> End_Messages   #}

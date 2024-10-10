@@ -2,42 +2,40 @@
 {% load form_filters %}
 
 {% block content %}
-<form class="form-control mt-5">
+    <form class="form-control mt-5">
         {% csrf_token %}
         <div class="flex flex-wrap">
             <div class="flex flex-col mr-5 lg:w-96">
                 <label for="formGroupExampleInput" class="form-label">Nome</label>
-                <input type="text">
-                {#                        {{ form.nome_material|add_class:"rounded" }}#}
+                {{ formUpdate.nome_material|add_class:"rounded" }}
             </div>
             <div class="flex flex-col mr-5 w-28">
                 <label for="formGroupExampleInput" class="form-label">Unid. compra</label>
-                <input type="text">
-                {#                        {{ form.unidade_compra|add_class:"rounded" }}#}
+                {{ formUpdate.unidade_compra|add_class:"rounded" }}
             </div>
             <div class="flex flex-col mr-5 w-32">
                 <label for="formGroupExampleInput" class="form-label">Unid. requisição</label>
-                {#                        {{ form.unidade_requisicao|add_class:"rounded" }}#}
+                {{ formUpdate.unidade_requisicao|add_class:"rounded" }}
             </div>
             <div class="flex flex-col mr-5 w-48">
                 <label for="formGroupExampleInput" class="form-label">Tipo de Material</label>
-                {#                        {{ form.id_tipo|add_class:"rounded" }}#}
+                {{ formUpdate.id_tipo|add_class:"rounded" }}
             </div>
             <div class="flex flex-col mr-5 w-48">
                 <label for="formGroupExampleInput" class="form-label">Grupo do Material</label>
-                {#                        {{ form.id_grupo|add_class:"rounded" }}#}
+                {{ formUpdate.id_grupo|add_class:"rounded" }}
             </div>
             <div class="flex flex-col mr-5 mt-2 w-48">
                 <label class="form-label">Qtde. Estoque</label>
-                {#                        {{ form.qtde_estoque|add_class:"rounded" }}#}
+                {{ formUpdate.qtde_estoque|add_class:"rounded" }}
             </div>
             <div class="flex flex-col mr-5 mt-2 w-48">
                 <label class="form-label">Empresa</label>
-                {#                        {{ form.id_empresa|add_class:"rounded" }}#}
+                {{ formUpdate.id_empresa|add_class:"rounded" }}
             </div>
             <div class="flex flex-col mr-5 mt-2 w-48">
                 <label class="form-label">Almoxarifado</label>
-                {#                        {{ form.id_almoxarifado|add_class:"rounded" }}#}
+                {{ formUpdate.id_almoxarifado|add_class:"rounded" }}
             </div>
             <div class="flex flex-col items-center mt-2">
                 <label>Ativo/Inativo</label>

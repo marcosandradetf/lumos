@@ -66,7 +66,7 @@ def update_material(request, id):
     if request.method == "GET":
         # Se for uma requisição GET, exibe o formulário com os dados atuais do material
         materiais_form_update = MateriaisForm(instance=material)
-        return render(request, 'materiais/gerenciar/update_material.html', {'form': materiais_form_update})
+        return render(request, 'materiais/forms/form_update_material.html', {'formUpdate': materiais_form_update})
 
     else:
         # Preenche o formulário com os dados da requisição e a instância do material
