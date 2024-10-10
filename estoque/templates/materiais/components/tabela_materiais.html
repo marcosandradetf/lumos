@@ -41,11 +41,9 @@
                     </button>
                 </form>
             </td>
-            <td class="border-b-2 border-slate-400 p-2 cursor-pointer">
-                <form hx-post="{% url 'update_material' obj.id_material %}" hx-target="#insert">
-                    {% csrf_token %}
-                    <button type="submit" class="cursor-pointer">
-                       <svg width="20px" height="20px" fill="#4f4f4f" viewBox="-4 0 32 32" version="1.1"
+            <td class="border-b-2 border-slate-400 p-2 cursor-pointer" x-data="{ openModal: false}">
+                    <button type="submit" class="cursor-pointer" @click="openModal = true">
+                        <svg width="20px" height="20px" fill="#4f4f4f" viewBox="-4 0 32 32" version="1.1"
                          xmlns="http://www.w3.org/2000/svg" stroke="#4f4f4f">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -54,9 +52,10 @@
                         </g>
                     </svg>
                     </button>
-                </form>
+                    {% include 'materiais/forms/form_update_material.html' %}
             </td>
         </tr>
     {% endfor %}
     </tbody>
+
 </table>

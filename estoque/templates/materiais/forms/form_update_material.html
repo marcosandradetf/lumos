@@ -1,0 +1,73 @@
+{% extends 'materiais/components/modal.html' %}
+{% load form_filters %}
+
+{% block content %}
+<form class="form-control mt-5">
+        {% csrf_token %}
+        <div class="flex flex-wrap">
+            <div class="flex flex-col mr-5 lg:w-96">
+                <label for="formGroupExampleInput" class="form-label">Nome</label>
+                <input type="text">
+                {#                        {{ form.nome_material|add_class:"rounded" }}#}
+            </div>
+            <div class="flex flex-col mr-5 w-28">
+                <label for="formGroupExampleInput" class="form-label">Unid. compra</label>
+                <input type="text">
+                {#                        {{ form.unidade_compra|add_class:"rounded" }}#}
+            </div>
+            <div class="flex flex-col mr-5 w-32">
+                <label for="formGroupExampleInput" class="form-label">Unid. requisição</label>
+                {#                        {{ form.unidade_requisicao|add_class:"rounded" }}#}
+            </div>
+            <div class="flex flex-col mr-5 w-48">
+                <label for="formGroupExampleInput" class="form-label">Tipo de Material</label>
+                {#                        {{ form.id_tipo|add_class:"rounded" }}#}
+            </div>
+            <div class="flex flex-col mr-5 w-48">
+                <label for="formGroupExampleInput" class="form-label">Grupo do Material</label>
+                {#                        {{ form.id_grupo|add_class:"rounded" }}#}
+            </div>
+            <div class="flex flex-col mr-5 mt-2 w-48">
+                <label class="form-label">Qtde. Estoque</label>
+                {#                        {{ form.qtde_estoque|add_class:"rounded" }}#}
+            </div>
+            <div class="flex flex-col mr-5 mt-2 w-48">
+                <label class="form-label">Empresa</label>
+                {#                        {{ form.id_empresa|add_class:"rounded" }}#}
+            </div>
+            <div class="flex flex-col mr-5 mt-2 w-48">
+                <label class="form-label">Almoxarifado</label>
+                {#                        {{ form.id_almoxarifado|add_class:"rounded" }}#}
+            </div>
+            <div class="flex flex-col items-center mt-2">
+                <label>Ativo/Inativo</label>
+                <label class="relative inline-flex items-center cursor-pointer -z-20">
+                    {#                            {{ form.inativo|add_class:"sr-only peer" }}#}
+                    <div class="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-600 peer-focus:ring-4 peer-focus:ring-blue-300 transition-all"></div>
+                    <div class="w-5 h-5 bg-white rounded-full border border-gray-300 absolute left-0.5 top-0.5 peer-checked:translate-x-full peer-checked:border-white transition-transform"></div>
+                </label>
+            </div>
+        </div>
+
+        <div class="flex justify-between">
+            {#                    <div>#}
+            {#                        {% if message.success %}#}
+            {#                            <div class="text-green-700">#}
+            {#                                {{ message.success }}#}
+            {#                            </div>#}
+            {#                        {% elif message.error %}#}
+            {#                            <div class="text-red-600">#}
+            {#                                {{ message.error }}#}
+            {#                            </div>#}
+            {#                        {% endif %}#}
+            {#                    </div>#}
+
+            <button class="rounded p-2 bg-blue-500 text-white hover:bg-blue-600 shadow mt-3 cursor-default hover:font-bold">
+                Atualizar
+            </button>
+        </div>
+
+
+    </form>
+
+{% endblock %}

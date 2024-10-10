@@ -10,16 +10,26 @@
 
     <div>
         {# -------> Messages   #}
-        <div class="border border-neutral-300 shadow overflow-auto h-44 mb-4 xl:absolute xl:-right-3  2xl:-right-16 p-5 w-[90vw] xl:h-[45.8rem] 2xl:w-[24rem] xl:mb-0 xl:w-[20rem]">
-            <h2 class="text-center border-b border-neutral-300 mb-5">Últimas Atualizaçoes</h2>
-{#            {% include 'materiais/messages/messages_server.html' %}#}
-            <div id="messages" hx-get="{% url 'materiais_messages' %}" hx-trigger="load, every 5s" hx-swap="innerHTML">
-
+        <div x-data="{ logOpen: $persist(true) }">
+            <div :class="logOpen ? '' : 'h-1 overflow-hidden xl:h-20 border-none shadow-none'"
+                 class="border border-neutral-300 shadow overflow-auto h-44 mb-4 xl:absolute xl:-right-3 2xl:right-5 p-5 xl:mb-0 w-[90vw] xl:w-[20rem] 2xl:w-[24rem] xl:h-[43.35rem]">
+                <div :class="logOpen ? '' : 'border-none'"
+                     class="flex items-center justify-between border-b border-neutral-300 mb-5">
+                    <h2 class="text-center">Últimas Atualizaçoes</h2>
+                    <span class="material-icons cursor-pointer select-none" @click="logOpen = !logOpen"
+                          x-text="logOpen ? 'visibility_off' : 'visibility'"></span>
+                </div>
+                <div x-show="logOpen" id="messages" hx-get="{% url 'materiais_messages' %}" hx-trigger="load, every 5s"
+                     hx-swap="innerHTML">
+                </div>
             </div>
         </div>
         {# -------> End_Messages   #}
+
         {% include 'materiais/gerenciar/client.html' %}
+
     </div>
+
 
 
 {% endblock %}

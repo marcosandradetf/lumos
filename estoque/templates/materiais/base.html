@@ -10,6 +10,10 @@
     <title>{% block title %}Título Padrão{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMS0dE1c4z5D1B8PqQ1H6Wk2ZlK9Bf5BfW9E57" crossorigin="anonymous">
+    <!-- Alpine Plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Alpine Core -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/htmx.org@2.0.2"></script>
     <script defer src="{% static 'script/messages_server.js' %}"></script>
@@ -17,6 +21,8 @@
     <!-- Carregar arquivos estáticos -->
   <!-- Link para o arquivo CSS estático -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 </head>
 

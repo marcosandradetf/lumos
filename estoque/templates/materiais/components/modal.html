@@ -1,0 +1,10 @@
+<div x-show="openModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-30"></div>
+<div x-show="openModal"
+     @click.away="openModal = false"
+     class="fixed z-40 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-10 rounded">
+    <span class="absolute right-5 top-5 material-icons select-none cursor-pointer"
+          @click="openModal = false">close</span>
+    {% block content %}
+    <!-- O conteúdo específico de cada página irá aqui -->
+    {% endblock %}
+</div>

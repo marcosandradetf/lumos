@@ -62,7 +62,13 @@ def update_material(request, id):
     material = Materiais.objects.get(pk=id)
 
     # Se a requisição for POST, estamos tentando atualizar os dados
-    if request.method == "POST":
+
+    if request.method == "GET":
+        # Se for uma requisição GET, exibe o formulário com os dados atuais do material
+        materiais_form_update = MateriaisForm(instance=material)
+        return render(request, 'materiais/gerenciar/update_material.html', {'form': materiais_form_update})
+
+    else:
         # Preenche o formulário com os dados da requisição e a instância do material
         materiais_form_update = MateriaisForm(request.POST, instance=material)
 
@@ -72,12 +78,9 @@ def update_material(request, id):
             materiais_form_update.save()
             # Redireciona para alguma página (por exemplo, lista de materiais)
             return redirect('materiais_view')  # Substitua pelo nome correto da URL de destino
-    else:
-        # Se for uma requisição GET, exibe o formulário com os dados atuais do material
-        materiais_form_update = MateriaisForm(instance=material)
 
     # Renderiza o template com o formulário
-    return render(request, 'materiais/gerenciar/update_material.html', {'form': materiais_form_update})
+
 
 
 def delete_material(request, id):
