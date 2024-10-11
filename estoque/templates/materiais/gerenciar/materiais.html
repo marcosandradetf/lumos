@@ -24,7 +24,7 @@
                      @transitionend="if (logOpen) { setInterval(() => { document.getElementById('messages').dispatchEvent(new Event('htmx:load')); }, 5000) }">
                     <div id="messages"
                          hx-get="{% url 'materiais_messages' %}"
-                         hx-trigger="load"
+                         hx-trigger="load, every 5s"
                          hx-swap="innerHTML">
                     </div>
                 </div>

@@ -1,0 +1,13 @@
+{% extends 'materiais/components/modal.html' %}
+{% load form_filters %}
+
+{% block content %}
+<form class="mt-5">
+    {% csrf_token %}
+    <h2>Confirme a exclusão do material id - nome</h2>
+    <div class="flex justify-between items-center">
+        <button hx-post="" class="text-red-600 p-3 rounded shadow">Confirmar</button>
+        <button @click="showModal = false" class="text-green-600 p-3 rounded shadow">Cancelar</button>
+    </div>
+</form>
+{% endblock %}

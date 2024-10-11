@@ -32,36 +32,15 @@
                 <form hx-post="{% url 'delete_material' obj.id_material %}" hx-target="#insert"
                       hx-confirm="Tem certeza de que deseja deletar este material?">
                     {% csrf_token %}
-                    <button type="submit" class="cursor-pointer">
-                        <svg width="20px" height="20px" viewBox="0 0 16.000001 16.000001"
-                             xmlns="http://www.w3.org/2000/svg" version="1.1" fill="#000000">
-                            <g>
-                                <path d="M3 6v8c0 .554.446 1 1 1h8c.554 0 1-.446 1-1V6z" style="fill:#0062ff;"></path>
-                                <path d="M5 1v2H2v2h12V3h-3V1zm1 1h4v1H6z" style="fill:#0062ff;"></path>
-                            </g>
-                        </svg>
-                    </button>
+                    <button type="submit" class="cursor-pointer material-icons text-red-600">delete</button>
                 </form>
             </td>
-            <td class="border-b-2 border-slate-400 p-2 cursor-pointer" x-data="{ openModal: false}">
-                <button type="submit" class="cursor-pointer" @click="openModal = true; $dispatch('load-update')">
-                    <svg width="20px" height="20px" fill="#4f4f4f" viewBox="-4 0 32 32" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg" stroke="#4f4f4f">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier"><title>edit</title>
-                            <path d="M17.438 22.469v-4.031l2.5-2.5v7.344c0 1.469-1.219 2.688-2.656 2.688h-14.625c-1.469 0-2.656-1.219-2.656-2.688v-14.594c0-1.469 1.188-2.688 2.656-2.688h14.844v0.031l-2.5 2.469h-11.5c-0.531 0-1 0.469-1 1.031v12.938c0 0.563 0.469 1 1 1h12.938c0.531 0 1-0.438 1-1zM19.813 7.219l2.656 2.656 1.219-1.219-2.656-2.656zM10.469 16.594l2.625 2.656 8.469-8.469-2.625-2.656zM8.594 21.094l3.625-0.969-2.656-2.656z"></path>
-                        </g>
-                    </svg>
-                </button>
-                <div x-show="openModal"
-                     @transitionend="if (openModal) { document.getElementById('update').dispatchEvent(new Event('htmx:load')) }">
-                    <div id="update"
-                         hx-get="{% url 'update_material' obj.id_material %}"
-                         hx-trigger="load"
-                         hx-swap="innerHTML">
-                    </div>
-                </div>
+            <td class="border-b-2 border-slate-400 p-2 cursor-pointer">
+                <button hx-get="{% url 'update_material' obj.id_material %}"
+                        hx-target="#update"
+                        hx-swap="innerHTML"
+                        class="cursor-pointer material-icons">edit</button>
+                <div id="update"></div>
             </td>
         </tr>
     {% endfor %}
